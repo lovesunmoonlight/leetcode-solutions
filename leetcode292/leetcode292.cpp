@@ -21,6 +21,7 @@ bool canWinNim(int n)
 
 int main()
 {
-    return 0;
+	system("pause");
+	return 0;
 }
 
