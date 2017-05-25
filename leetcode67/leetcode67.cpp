@@ -2,7 +2,7 @@
 // 字符串模拟二进制加法
 // 注意一点就是当前和可能为0,1,2,3中任意一个
 // 可以采用%2来得到当前位的值，同时进位标志置为1
-// Accepted
+// Accepted 
 
 #include "stdafx.h"
 #include <iostream>
