@@ -31,7 +31,6 @@ public:
 		TreeNode* temp = root->left;
 		root->left = invertTree(root->right);
 		root->right = invertTree(temp);
-		//travePre(root);
 		return root;
 	}
 };
