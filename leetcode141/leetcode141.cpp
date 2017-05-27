@@ -1,10 +1,17 @@
 // leetcode141.cpp : 定义控制台应用程序的入口点。
-// TLE
+// 判断单链表是否有环
+// 出现环的情况是沿着头结点一直走
+// 到某个结点处如果next域为NULL说明无环，如果next域为之前某个结点的地址，说明有环
+// 所以可以将遍历过的结点地址保存到一个set中，进行查找
+// 注意在存入set时要借助一个临时变量，否则set中的地址会随着p的迭代不断更新，相当于没有新的地址加入
+// 之前TLE了好久就是因为这个原因
+// Accepted
 
 #include "stdafx.h"
 #include <iostream>
 #include <cstdlib>
 #include <set>
+#include <memory>
 
 using namespace std;
 
@@ -23,36 +30,20 @@ public:
 		//空结点或next域为空的单个结点无环
 		if (!head || !(head->next))
 			return false;
-		decltype(head) p = head;
-		decltype(head) q = head;
+
+		ListNode* p = head;
 		set<ListNode*> S;
-		/*while (p)
+		ListNode* temp = head;
+		S.insert(temp);
+		while (p = p->next)
 		{
-			//指向自身
-			if (p->next == p)
+			
+			if (S.find(p)!=S.end())
 				return true;
-			//指向前面的结点
-			while (q!=p)
-			{
-				if ((p->next == q))
-					return true;
-				q = q->next;
-			}
-			p = p->next;
-			q = head;
-		}*/
-		int cnt = 0;
-		while (p)
-		{
-			cnt++;
-			S.insert(p);
-			if (cnt-S.size()!=0);
-			{
-				cout << S.size() << endl;
-				cout << cnt << endl;
-				return true; 
-			}
-			p = p->next;
+			if (p == nullptr)
+				return false;
+			ListNode* temp = p;
+			S.insert(temp);
 		}
 		return false;
 
@@ -66,7 +57,7 @@ int main()
 	head->next = new ListNode(2);
 	head->next->next = new ListNode(0);
 	head->next->next->next = new ListNode(-4);
-	//head->next->next->next->next = head;
+	head->next->next->next->next = head;
 	Solution s;
 	if (s.hasCycle(head))
 		cout << "There is a cycle." << endl;
