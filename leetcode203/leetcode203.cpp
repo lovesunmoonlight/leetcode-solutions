@@ -19,54 +19,63 @@ struct ListNode {
 class Solution {
 public:
 	ListNode* removeElements(ListNode* head, int val) {
-		//空结点或一个结点单独处理
+		//空表
 		if (!head)
-			return nullptr;
-		if (head->next == nullptr&&head->val == val)
-			return nullptr;
-		if (head->next == nullptr&&head->val != val)
 			return head;
-		ListNode* p = head;
-		while (p)
-		{
-			if (p->val == val)
-			{
-				remove(head, p);
-			}
-			p= p->next;
-		}
-		return head;
-	}
 
-	void remove(ListNode* &head,ListNode* q)
-	{
-		if (q == head)
-			*head= *(head->next);
-		ListNode* p = head;
-		while (p != q)
+		//单个结点
+		if (head->next == nullptr)
 		{
-			if (p->next == q)
+			if (val == head->val)
+				return nullptr;
+			else
+				return head;
+		}
+
+		//删除前面连续几个与给定值相同的结点
+		while (head&&val == head->val)
+		{
+			head = head->next;
+		}
+		
+		ListNode* p = head;
+		while (p&&p->next)
+		{
+			if (val == p->next->val)
 			{
 				p->next = p->next->next;
-				break;
 			}
-			p = p->next;
+			else
+				p = p->next;
 		}
+
+		return head;
 	}
 };
-
 
 int main()
 {
 	ListNode* head = new ListNode(1);
-	head->next = new ListNode(1);
-	head->next->next = new ListNode(3);
-	Solution S;
-	head=S.removeElements(head, 1);
+	head->next = new ListNode(2);
+	head->next->next = new ListNode(2);
+	head->next->next->next = new ListNode(1);
+	/*head->next->next->next->next = new ListNode(4);
+	head->next->next->next->next->next = new ListNode(5);
+	head->next->next->next->next->next->next = new ListNode(6);*/
 	ListNode* p = head;
+	cout << "before:" << endl;
 	while (p)
 	{
 		cout << p->val << endl;
+		p = p->next;
+	}
+	Solution S;
+	head=S.removeElements(head, 2);
+	cout << "after:" << endl;
+	p = head;
+	while (p)
+	{
+		cout << p->val<<endl;
 		p = p->next;
 	}
 	system("pause");
