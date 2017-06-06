@@ -53,15 +53,28 @@ public:
 	}
 };
 
+ListNode* pushNode(ListNode* head, int e)
+{
+	ListNode* p = head;
+	while (p)
+	{
+		if (p->next == nullptr)
+		{
+			p->next = new ListNode(e);
+			break;
+		}
+		else
+			p = p->next;
+	}
+	return head;
+}
+
 int main()
 {
 	ListNode* head = new ListNode(1);
-	head->next = new ListNode(2);
-	head->next->next = new ListNode(2);
-	head->next->next->next = new ListNode(1);
-	/*head->next->next->next->next = new ListNode(4);
-	head->next->next->next->next->next = new ListNode(5);
-	head->next->next->next->next->next->next = new ListNode(6);*/
+	pushNode(head, 2);
+	pushNode(head, 2);
+	pushNode(head, 1);
 	ListNode* p = head;
 	cout << "before:" << endl;
 	while (p)
