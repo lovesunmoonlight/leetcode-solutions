@@ -1,5 +1,6 @@
 // leetcode203.cpp : 定义控制台应用程序的入口点。
-// WA
+// 删除单链表中的特定值
+// Accepted
 
 #include "stdafx.h"
 #include <iostream>

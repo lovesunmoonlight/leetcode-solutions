@@ -19,35 +19,25 @@ struct ListNode {
 class Solution {
 public:
 	ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
-		decltype(headA) p1 = headA;
-		decltype(headB) p2 = headB;
-		//有一个为空
-		if (!p1 || !p2)
+		ListNode* p1 = headA;
+		ListNode* p2 = headB;
+		
+		//某一表为空
+		if (!headA || !headB)
 			return nullptr;
-		//两个相同列表
-		if (p1 == p2)
-			return p1;
+
 		while (p1)
 		{
 			while (p2)
 			{
-				if (p1->next&&p1->next== p2)
-					return p2;
-				p2=p2->next;
-			}
-			p1=p1->next;
-		}
-		while (p2)
-		{
-			while (p1)
-			{
-				if (p2->next&&p2->next == p1)
+				if (p1 == p2)
 					return p1;
-				p1 = p1->next;
+				p2++;
 			}
-			p2 = p2->next;
+			p1++;
 		}
-		return nullptr;
+
+
 	}
 };
 

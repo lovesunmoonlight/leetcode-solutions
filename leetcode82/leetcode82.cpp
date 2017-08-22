@@ -4,6 +4,9 @@
 #include "stdafx.h"
 #include <iostream>
 #include <vector>
+#include <algorithm>
+#include <cstdlib>
+#include <map>
 
 using namespace std;
 
@@ -19,26 +22,24 @@ struct ListNode {
 class Solution {
 public:
 	ListNode* deleteDuplicates(ListNode* head) {
-		if (!head || !head->next)
-			return head;
 		ListNode* p = head;
-		vector<int> s;
+		if (head == nullptr || head->next == nullptr)
+			return head;
+		
+		//头部的相同结点
+		if (p->next->val == p->val)
+		{
+			while ((p != nullptr&&p->next != nullptr)&&(p->val == p->next->val))
+			{
+				head = head->next->next;
+				p = head;
+			}
+		}
+
 		while (p)
 		{
-			if (p->next&&p->val == p->next->val)
-			{
-				ListNode* q = p->next;
-				while (q&&q->val == p->val)
-				{
-					q = q->next;
-				}
-				p->next = q;
-				s.push_back(p->val);
-			}
-			p = p->next;
+			if(p->next->val)
 		}
-		
-		return head;
 
 	}
 };
@@ -48,12 +49,12 @@ int main()
 {
 	
 	ListNode* head = new ListNode(1);
-	head->next = new ListNode(1);
-	head->next->next = new ListNode(1);
-	head->next->next->next = new ListNode(1);
-	head->next->next->next->next = new ListNode(1);
-	head->next->next->next->next->next = new ListNode(1);
-	head->next->next->next->next->next->next = new ListNode(1);
+	head->next = new ListNode(2);
+	head->next->next = new ListNode(3);
+	head->next->next->next = new ListNode(3);
+	head->next->next->next->next = new ListNode(4);
+	head->next->next->next->next->next = new ListNode(4);
+	head->next->next->next->next->next->next = new ListNode(5);
 	Solution S;
 	head=S.deleteDuplicates(head);
 	ListNode* p = head;
