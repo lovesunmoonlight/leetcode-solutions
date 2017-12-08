@@ -12,7 +12,7 @@ using namespace std;
 class Solution {
 public:
 	vector<vector<int>> imageSmoother(vector<vector<int>>& M) {
-		int size = M.size()
+		int size = M.size();
 
 		//¹¹Ôì´ð°¸¾ØÕó
 		vector<vector<int>> ans;
