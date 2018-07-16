@@ -19,9 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{9360166B-1123-4FB3-B59D-FE2C9CAC9606}</ProjectGuid>
+    <ProjectGuid>{9425DC8D-DAD2-4429-A6F0-5CDCB149EE2D}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>leetcode107</RootNamespace>
+    <RootNamespace>leetcode717</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -149,7 +149,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="leetcode107.cpp" />
+    <ClCompile Include="leetcode717.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
